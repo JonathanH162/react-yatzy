@@ -1,0 +1,128 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.dice {
+  height: 50px;
+  width: 50px;
+  padding: 15px;
+}
+.saveButton {
+  width: 5%;
+  height: 5%;
+  font-size: x-small;
+}
+.play-btn {
+  margin: 15px;
+  background-color: rgb(29, 82, 33);
+  height: 50px;
+  width: 150px;
+}
+
+.dice-div {
+  background-color: #f4f4f4;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  height: 85px;
+}
+
+.saved-dice-div {
+  background-color: #f4f4f4;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  height: 85px;
+}
+
+.score-sheet {
+  width: 400px;
+  margin: 0 auto;
+  background-color: #f4f4f4;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 20px;
+  color: black;
+}
+
+.player-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.player1-div,
+.player2-div {
+  background-color: rgb(27, 46, 27);
+  border-radius: 10px;
+  padding-right: 10px;
+  padding-left: 10px;
+  color: white;
+}
+
+.player-name {
+  font-weight: bold;
+}
+
+.player-score {
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.score-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.score-table th {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: center;
+  background-color: rgb(27, 46, 27);
+  color: white;
+}
+
+.score-table .score-cell {
+  cursor: pointer;
+  background-color: #efefef;
+  border: 1px solid #ccc;
+}
+.score-cell-sum {
+  cursor: pointer;
+  background-color: #efefef;
+  border-top: 2px solid black;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+}
+.score-cell-bonus {
+  cursor: pointer;
+  background-color: #efefef;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+}
+.category-cell {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: center;
+}
+.category-cell-sum {
+  border-top: 2px solid black;
+  border-left: 1px solid #ccc;
+  padding: 8px;
+  text-align: center;
+}
+.category-cell-bonus {
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+  border-left: 1px solid #ccc;
+  padding: 8px;
+  text-align: center;
+}
+
+.score-table .score-cell:hover {
+  background-color: #d1d1d1;
+}
