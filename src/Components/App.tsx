@@ -5,6 +5,9 @@ import CurrentRoll from "./CurrentRoll";
 import SavedDice from "./SavedDice";
 import Stats from "./Stats";
 
+//TODO - ordna så att man måste kryssa i en score per runda innan man går vidare till nästa,
+// och att tärningarna kontrolleras när score kryssas i, och om det inte finns passande tärningar så stryks den.
+
 let diceArray = [6, 6, 6, 6, 6];
 let savedDiceArray: number[] = [];
 let scoreIndex = 0;
@@ -12,8 +15,6 @@ let totalScore1 = 0;
 let totalScore2 = 0;
 let scoreSum1 = 0;
 let scoreSum2 = 0;
-let bonusArray1 = [];
-let bonusArray2 = [];
 const scoreTableArray = [
   "Ones",
   "Twos",
@@ -47,28 +48,24 @@ function App() {
   const [activePlayer, setActivePlayer] = useState(1);
 
   useEffect(() => {
-    {
-      activePlayer === 1 && scoreIndex <= 5 ? (scoreArray[6] += score) : "";
+    if (activePlayer === 1 && scoreIndex <= 5) {
+      scoreArray[6] += score;
     }
-    {
-      activePlayer === 2 && scoreIndex >= 17 && scoreIndex <= 22
-        ? (scoreArray[23] += score)
-        : "";
+    if (activePlayer === 2 && scoreIndex >= 17 && scoreIndex <= 22) {
+      scoreArray[23] += score;
     }
-    {
-      activePlayer === 1 && scoreSum1 >= 63 && bonusArray1.length === 6
-        ? ((scoreArray[7] = 50), (totalScore1 += 50), (bonusArray1 = []))
-        : "";
+    if (activePlayer === 1 && scoreSum1 >= 63) {
+      scoreArray[7] = 50;
+      totalScore1 += 50;
     }
-    {
-      activePlayer === 2 && scoreSum2 >= 63 && bonusArray2.length === 6
-        ? ((scoreArray[24] = 50), (totalScore2 += 50), (bonusArray2 = []))
-        : "";
+    if (activePlayer === 2 && scoreSum2 >= 63) {
+      scoreArray[24] = 50;
+      totalScore2 += 50;
     }
     scoreArray[scoreIndex] || (scoreArray[scoreIndex] += score);
     activePlayer === 1 ? (totalScore1 += score) : (totalScore2 += score);
     setScore(0);
-  }, [score, activePlayer]); //se om det blir någon skillnad av activePlayer.
+  }, [score, activePlayer]);
 
   function generateRandomNumber() {
     return Math.floor(Math.random() * 6) + 1;
@@ -132,18 +129,16 @@ function App() {
       return a + b;
     }, 0);
     if (!scoreChecked) {
-      {
-        activePlayer === 1 && index <= 5 && scoreArray[index] === 0
-          ? (scoreSum1 += sum) && bonusArray1.push(sum)
-          : "";
+      if (activePlayer === 1 && index <= 5 && scoreArray[index] === 0) {
+        scoreSum1 += sum;
       }
-      {
+      if (
         activePlayer === 2 &&
         index >= 17 &&
         index <= 22 &&
         scoreArray[index] === 0
-          ? (scoreSum2 += sum) && bonusArray2.push(sum)
-          : "";
+      ) {
+        scoreSum2 += sum;
       }
       scoreIndex = index;
       roll !== 0 ? setRoll(3) : "";
@@ -167,7 +162,7 @@ function App() {
         onPlay={handlePlayButton}
         roll={roll}
         onReset={handleReset}
-        onSave={() => handleSaveDice}
+        onSave={handleSaveDice}
         activePlayer={activePlayer}
         diceArray={diceArray}
       />

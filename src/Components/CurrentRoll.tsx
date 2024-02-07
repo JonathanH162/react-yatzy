@@ -1,10 +1,10 @@
 import Dice from "./Dice.tsx";
 
 interface CurrentRollProps {
-  onPlay: (id: number) => void;
+  onPlay: () => void;
   roll: number;
   onReset: () => void;
-  onSave: () => void;
+  onSave: (id: number) => void;
   activePlayer: number;
   diceArray: number[];
 }
@@ -25,7 +25,7 @@ export default function CurrentRoll({
           : `Player ${activePlayer} - Current Roll = ${roll}`}
       </h2>
       <Dice onSave={onSave} diceArray={diceArray} />
-      <button onClick={() => onPlay} className="play-btn">
+      <button onClick={onPlay} className="play-btn">
         {roll === 0
           ? "Play"
           : roll === 1
