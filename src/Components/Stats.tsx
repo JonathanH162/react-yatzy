@@ -1,3 +1,13 @@
+interface statsProps {
+  onUpdateScore: (index: number) => void;
+  totalScore1: number;
+  totalScore2: number;
+  onSetStaticScore: (index: number, points: number) => void;
+  activePlayer: number;
+  scoreTableArray: string[];
+  scoreArray: number[];
+}
+
 export default function Stats({
   onUpdateScore,
   totalScore1,
@@ -6,7 +16,7 @@ export default function Stats({
   activePlayer,
   scoreTableArray,
   scoreArray,
-}) {
+}: statsProps) {
   return (
     <div className="score-sheet">
       <div className="player-info">
@@ -47,7 +57,7 @@ export default function Stats({
                 onClick={
                   activePlayer === 1
                     ? index === 6 || index === 7
-                      ? null
+                      ? () => {}
                       : index === 13
                       ? () => onSetStaticScore(index, 15)
                       : index === 14
@@ -55,7 +65,7 @@ export default function Stats({
                       : index === 16
                       ? () => onSetStaticScore(index, 50)
                       : () => onUpdateScore(index)
-                    : ""
+                    : () => {}
                 }
                 className={
                   index === 6
@@ -73,7 +83,7 @@ export default function Stats({
                 onClick={
                   activePlayer === 2
                     ? index === 6 || index === 7
-                      ? null
+                      ? () => {}
                       : index === 13
                       ? () => onSetStaticScore(index + 17, 15)
                       : index === 14
@@ -81,7 +91,7 @@ export default function Stats({
                       : index === 16
                       ? () => onSetStaticScore(index + 17, 50)
                       : () => onUpdateScore(index + 17)
-                    : ""
+                    : () => {}
                 }
                 className={
                   index === 6

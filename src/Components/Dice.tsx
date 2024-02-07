@@ -1,4 +1,9 @@
-export default function Dice({ onSave, diceArray }) {
+interface diceProps {
+  onSave: (index: number) => void;
+  diceArray: number[];
+}
+
+export default function Dice({ onSave, diceArray }: diceProps) {
   return (
     <div className="dice-div">
       <span>

@@ -167,7 +167,7 @@ function App() {
         onPlay={handlePlayButton}
         roll={roll}
         onReset={handleReset}
-        onSave={handleSaveDice}
+        onSave={() => handleSaveDice}
         activePlayer={activePlayer}
         diceArray={diceArray}
       />
