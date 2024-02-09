@@ -75,7 +75,7 @@ export default function Stats({
                     : "score-cell"
                 }
               >
-                {scoreArray[index] === 0 ? "-" : scoreArray[index]}
+                {scoreArray[index] === 0 ? "" : scoreArray[index]}
               </td>
 
               <td
@@ -101,7 +101,7 @@ export default function Stats({
                     : "score-cell"
                 }
               >
-                {scoreArray[index + 17] === 0 ? "-" : scoreArray[index + 17]}
+                {scoreArray[index + 17] === 0 ? "" : scoreArray[index + 17]}
               </td>
             </tr>
           ))}

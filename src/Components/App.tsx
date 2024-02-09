@@ -5,8 +5,7 @@ import CurrentRoll from "./CurrentRoll";
 import SavedDice from "./SavedDice";
 import Stats from "./Stats";
 
-//TODO - ordna så att man måste kryssa i en score per runda innan man går vidare till nästa,
-// och att tärningarna kontrolleras när score kryssas i, och om det inte finns passande tärningar så stryks den.
+//TODO ordna att tärningarna kontrolleras när score kryssas i, och om det inte finns passande tärningar så stryks den.
 
 let diceArray = [6, 6, 6, 6, 6];
 let savedDiceArray: number[] = [];
@@ -84,31 +83,33 @@ function App() {
   }
 
   function handlePlayButton() {
-    if (roll === 3) {
-      diceArray = [
-        generateRandomNumber(),
-        generateRandomNumber(),
-        generateRandomNumber(),
-        generateRandomNumber(),
-        generateRandomNumber(),
-      ];
-      savedDiceArray = [];
-      setScoreChecked(false);
-      activePlayer === 1 ? setActivePlayer(2) : setActivePlayer(1);
-    }
-    const updatedDiceArray: number[] = [];
-    for (let i = 0; i < diceArray.length; i++) {
-      updatedDiceArray.push(generateRandomNumber());
-    }
-    diceArray = updatedDiceArray;
-    {
-      roll === 0
-        ? setRoll(1)
-        : roll === 1
-        ? setRoll(2)
-        : roll === 2
-        ? setRoll(3)
-        : setRoll(1);
+    if (roll <= 2 || (roll === 3 && scoreChecked)) {
+      if (roll === 3) {
+        diceArray = [
+          generateRandomNumber(),
+          generateRandomNumber(),
+          generateRandomNumber(),
+          generateRandomNumber(),
+          generateRandomNumber(),
+        ];
+        savedDiceArray = [];
+        setScoreChecked(false);
+        activePlayer === 1 ? setActivePlayer(2) : setActivePlayer(1);
+      }
+      const updatedDiceArray: number[] = [];
+      for (let i = 0; i < diceArray.length; i++) {
+        updatedDiceArray.push(generateRandomNumber());
+      }
+      diceArray = updatedDiceArray;
+      {
+        roll === 0
+          ? setRoll(1)
+          : roll === 1
+          ? setRoll(2)
+          : roll === 2
+          ? setRoll(3)
+          : setRoll(1);
+      }
     }
   }
 
